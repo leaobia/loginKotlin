@@ -2,4 +2,13 @@
     <string name="app_name">My Login</string>
     <string name="login">Login</string>
     <string name="login_text">Please sign in to continue.</string>
+    <string name="sign1_text">Don’t have an account?</string>
+    <string name="sign2_text">Sign in</string>
+    <string name="signup">Sign Up</string>
+    <string name="signup2">Create a new account</string>
+    <string name="account">Already have an account?</string>
+    <string name="create">CREATE ACCOUNT</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sign_up_teste">SignUpActivityTeste</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

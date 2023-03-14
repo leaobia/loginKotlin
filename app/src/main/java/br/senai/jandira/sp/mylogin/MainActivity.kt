@@ -137,20 +137,57 @@ fun login() {
                             .width(120.dp)
                             .height(50.dp),
                         shape = RoundedCornerShape(12.dp, 12.dp, 12.dp, 12.dp)
-                        ) {
-                        Text(text = "SIGN IN",
-                        color = Color(255,255,255),
-                        fontWeight = FontWeight(800))
+                    ) {
+                        Text(
+                            text = "SIGN IN",
+                            color = Color(255, 255, 255),
+                            fontWeight = FontWeight(800)
+                        )
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_arrow_forward_24),
                             contentDescription = "",
-                            tint = Color(255,255,255)
+                            tint = Color(255, 255, 255)
                         )
                     }
                 }
+                Spacer(modifier = Modifier.height(35.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.sign1_text),
+                        color = Color(160, 156, 156)
+                    )
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        stringResource(id = R.string.sign2_text),
+                        fontWeight = FontWeight(800),
+                        color = Color(200, 6, 240)
+                    )
+                }
+
+                }
+
+            }
+        Row(
+            modifier = Modifier.fillMaxWidth()
+                .padding(top = 730.dp)  ,
+            horizontalArrangement = Arrangement.Start
+
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(140.dp)
+                    .height(50.dp),
+                color = Color(200, 6, 240),
+                shape = RoundedCornerShape(0.dp, 16.dp, 0.dp, 0.dp)
+            ) {
 
             }
 
         }
+
+
     }
 }
