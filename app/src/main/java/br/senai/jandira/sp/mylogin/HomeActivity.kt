@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -22,6 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.jandira.sp.mylogin.DAO.repository.categoriesRepository
+import br.senai.jandira.sp.mylogin.model.Categories
 import br.senai.jandira.sp.mylogin.ui.theme.MyLoginTheme
 
 class HomeActivity : ComponentActivity() {
@@ -29,43 +32,54 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyLoginTheme {
-                    Home()
-                }
+                Home(categoriesRepository.getCategoriesList())
             }
         }
     }
+}
 
 @Composable
-@Preview(showSystemUi = true)
-fun Home() {
+fun Home(categories: List<Categories>) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(210.dp)
-            ){
-                Image(painter = painterResource(id = R.drawable.paris),
-                    contentDescription = "" )
-                Column(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(15.dp)) {
-                    Column(modifier = Modifier
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.paris),
+                    contentDescription = ""
+                )
+                Column(
+                    modifier = Modifier
                         .fillMaxWidth()
-                        .padding(15.dp), horizontalAlignment = Alignment.End) {
-                        Image(painter = painterResource(id = R.drawable.susanna_profile), contentDescription = "", modifier = Modifier
-                            .clip(
-                                RoundedCornerShape(200.dp)
-                            )
-                            .height(61.dp))
+                        .padding(15.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(15.dp), horizontalAlignment = Alignment.End
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.susanna_profile),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .clip(
+                                    RoundedCornerShape(200.dp)
+                                )
+                                .height(61.dp)
+                        )
                         Text(
                             text = "Susanna Hoffs",
-                            color = Color(255,255,255,255)
+                            color = Color(255, 255, 255, 255)
                         )
                     }
-                    Column(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 0.dp)) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 0.dp)
+                    ) {
                         Row() {
                             Icon(
                                 painter = painterResource(id = R.drawable.baseline_location_on_24),
@@ -74,24 +88,41 @@ fun Home() {
                             )
                             Text(
                                 text = "You're in Paris",
-                                color = Color(255,255,255,255)
+                                color = Color(255, 255, 255, 255)
                             )
                         }
                         Row(modifier = Modifier.padding(start = 5.dp)) {
                             Text(
                                 text = "My Trips",
                                 fontSize = 32.sp,
-                                color = Color(255,255,255,255),
+                                color = Color(255, 255, 255, 255),
                                 fontWeight = FontWeight(800)
                             )
                         }
 
 
                     }
-                    }
+                }
 
+            }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 15.dp, top = 10.dp)
+            ) {
+                Text(
+                    text = "Categories",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Light,
+                    color = Color(86, 84, 84)
+                )
+                LazyRow() {
+
+                }
+            }
         }
-    }
+
 
     }
 }
+
